@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Customer extends Model
+{
+    use HasFactory;
+
+    protected $guarded = [];
+
+    public function debts()
+    {
+        return $this->hasMany(Debt::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+}
