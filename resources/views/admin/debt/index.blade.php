@@ -53,8 +53,7 @@
                                             <div class="modal-body" id="inputFields">
                                                 <label for="name">Customer: </label>
                                                 <div class="form-group">
-                                                    <select class="choices form-select" id="customer_id" name="customer_id"
-                                                        required>
+                                                    <select class="choices form-select" id="customer_id" name="customer_id">
                                                         <option value="">Pilih Customer</option>
                                                         @foreach ($customers as $customer)
                                                             <option value="{{ $customer->id }}">{{ $customer->name }}
@@ -65,8 +64,7 @@
 
                                                 <label for="product_id" class="me-2">Produk yang ingin dihutang:</label>
                                                 <div class="form-group">
-                                                    <select class="choices form-select" id="product_id" name="product_id"
-                                                        required>
+                                                    <select class="choices form-select" id="product_id" name="product_id">
                                                         <option value="">Pilih Produk</option>
                                                         @foreach ($products as $product)
                                                             <option value="{{ $product->id }}">{{ $product->name }} - Rp
@@ -79,7 +77,7 @@
                                                 <label for="quantity" class="me-2">Jumlah:</label>
                                                 <div class="form-group d-flex align-items-center mb-3">
                                                     <input id="quantity" class="form-control" type="number"
-                                                        name="quantity" required>
+                                                        name="quantity">
                                                 </div>
                                             </div>
                                             <div class="modal-footer">

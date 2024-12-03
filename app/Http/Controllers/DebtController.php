@@ -28,11 +28,23 @@ class DebtController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        // $request->validate([
+        //     'customer_id' => 'required',
+        //     'product_id' => 'required',
+        //     'quantity' => 'required|integer',
+        // ]);
+
+        $validator = Validator::make($request->all(), [
             'customer_id' => 'required',
             'product_id' => 'required',
             'quantity' => 'required|integer',
         ]);
+
+        if ($validator->fails()) {
+            return redirect('/debts')
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $product = Product::find($request->product_id);
         $total_amount = $product->price * $request->quantity;
@@ -49,7 +61,7 @@ class DebtController extends Controller
 
         $this->sendWhatsAppMessage($formatted_phone_number, "Hai, anda baru saja berhutang sebesar *Rp{$total_hutang}*. Silahkan ketik *!cekhutang* jika ingin melihat total semua hutang anda 😊.");
 
-        return redirect()->with('status', 'Hutang berhasil ditambahkan.');
+        return redirect("/debts")->with("status", "Hutang Berhasil Ditambahkan");
     }
 
     public function sendWhatsAppMessage($phoneNumber, $message)
