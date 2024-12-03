@@ -49,7 +49,7 @@ class DebtController extends Controller
 
         $this->sendWhatsAppMessage($formatted_phone_number, "Hai, anda baru saja berhutang sebesar *Rp{$total_hutang}*. Silahkan ketik *!cekhutang* jika ingin melihat total semua hutang anda 😊.");
 
-        return redirect()->back()->with('success', 'Hutang berhasil ditambahkan.');
+        return redirect()->with('status', 'Hutang berhasil ditambahkan.');
     }
 
     public function sendWhatsAppMessage($phoneNumber, $message)
